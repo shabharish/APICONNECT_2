@@ -37,7 +37,7 @@
 	
 	<exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
-		<arg value="apic publish calculator_1.0.0.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish C:\Users\shabharish_murthy\.jenkins\workspace\Ant Apiconnect\Calculator\calculator_1.0.0.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
