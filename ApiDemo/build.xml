@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="project" default="run">
+  <target name="run" description="">
+    <property environment="env" />
+    <property name="src.dir" value="src" />
+    <property name="reports.dir" value="reports" />
+    <property file="env/build.properties" />
+    <antcall target="build" />
+  </target>
+ 
+<target name="build">
+     <echo message="Before apic cmd" />
+    
+     <!-- <exec dir ="D:\Pratap" executable="cmd"> -->
+	 
+	 <!-- logging out if incase a session exists, am doing this bcoz ther is no cmd to find whether logged in or not -->
+	 
+	 <exec executable="cmd" osfamily="windows" >
+     	<arg value="/c"/>
+		<arg value="apic logout --server ${api-server}"/>
+	 </exec>
+	
+	 <!-- loggin in to on premises apiconnect -->
+	 
+	 <exec executable="cmd" osfamily="windows">
+     	<arg value="/c"/>
+		<arg value="apic login --username ${api-user} --password ${api-pwd} --server ${api-server}"/>
+	 </exec>
+			
+			<!-- Setting environment/catalog to publish -->
+	<exec  executable="cmd" osfamily="windows">
+     	<arg value="/c"/>
+		<arg value="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
+	</exec>
+	
+	<!--publishing the product to specific environment/catalog  -->
+	
+	<exec executable="cmd" osfamily="windows">
+     	<arg value="/c"/>
+		<arg value="apic publish ${src.dir}/Raghu-product.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+	</exec>
+		 
+		 <!-- checking whether api is published or not by gettin the list of published apis -->
+	<exec executable="cmd" osfamily="windows">
+     	<arg value="/c"/>
+		<arg value="apic apis"/>
+	</exec>
+   </target>
+
+ </project>
