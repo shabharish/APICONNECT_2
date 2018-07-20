@@ -2,11 +2,12 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-   <!-- <property name="src.dir" value="src" /> -->
-    	<fileset dir="src.dir" id="id">
+   <property name="src.dir" value="src" file="*.yaml">
+   </property>
+   	<!-- <fileset dir="src.dir" id="id">
     	 <filename name="**/*product*.yaml"/>
     	 <filename name="**/*.yaml"/>
-    	</fileset>
+    	</fileset> -->
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
