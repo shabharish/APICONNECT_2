@@ -12,7 +12,6 @@
     <antcall target="build" />
   </target>
  
-<apply executable=""></apply>
 <target name="build">
      <echo message="Before apic cmd" />
     
