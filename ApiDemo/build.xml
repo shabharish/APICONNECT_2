@@ -2,7 +2,13 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-    <property name="src.dir" value="src" />
+    <property name="src.dir" value="src" >
+    	<fileset dir="dir" includesfile="">
+    <include name="include"/>
+    <exclude name="exclude"/>
+</fileset>
+
+    </property>
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
@@ -36,9 +42,18 @@
 	<!--publishing the product to specific environment/catalog  -->
 	
 	<exec executable="cmd" osfamily="windows">
+		<echo message="publishing the product yaml" />
      	<arg value="/c"/>
-		<arg value="apic publish ${src.dir}/Raghu-product.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish ${src.dir}/*product*.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
+	
+	<!-- publishing the api's of the above product to specific environment/catalog  -->
+		
+		<exec executable="cmd" osfamily="windows">
+			<echo message="publishing the api yaml" />
+	     	<arg value="/c"/>
+			<arg value="apic publish ${src.dir}/*.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		</exec>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
 	<exec executable="cmd" osfamily="windows">
