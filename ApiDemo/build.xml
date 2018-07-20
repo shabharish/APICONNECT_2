@@ -2,7 +2,7 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-    <property name="src.dir" value="src" />
+   <!-- <property name="src.dir" value="src" /> -->
     	<fileset dir="src.dir" id="id">
     	 <filename name="**/*product*.yaml"/>
     	 <filename name="**/*.yaml"/>
@@ -41,6 +41,7 @@
 	
 	<!--publishing the product to specific environment/catalog  -->
 		<echo message="publishing the product yaml" />
+		<echo message="the value of src is ${src.dir}" />
 	<exec executable="cmd" osfamily="windows">
 
      	<arg value="/c"/>
