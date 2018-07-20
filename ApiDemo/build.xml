@@ -34,20 +34,11 @@
 	</exec>
 	
 	<!--publishing the product to specific environment/catalog  -->
-		<echo message="publishing the product yaml" />
-	<exec executable="cmd" osfamily="windows">
-		
-     	<arg value="/c"/>
-		<arg value="apic publish ${src.dir}/*product*.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
-	</exec>
 	
-	<!-- publishing the api's of the above product to specific environment/catalog  -->
-		<echo message="publishing the api yaml" />
-		<exec executable="cmd" osfamily="windows">
-			
-	     	<arg value="/c"/>
-			<arg value="apic publish ${src.dir}/*.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
-		</exec>
+	<exec executable="cmd" osfamily="windows">
+     	<arg value="/c"/>
+		<arg value="apic publish ${src.dir}/Raghu-product.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+	</exec>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
 	<exec executable="cmd" osfamily="windows">
