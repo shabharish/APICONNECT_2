@@ -2,7 +2,7 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-    <property name="src.dir" value="Calculator/src" />
+    <property name="src.dir" value="src" />
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
