@@ -10,7 +10,7 @@
  
 <target name="build">
      <echo message="Before apic cmd" />
-    
+    <echo message="dir valus is ${src.dir}" />
      <!-- <exec dir ="D:\Pratap" executable="cmd"> -->
 	 
 	 <!-- logging out if incase a session exists, am doing this bcoz ther is no cmd to find whether logged in or not -->
