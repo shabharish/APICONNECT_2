@@ -10,15 +10,16 @@
     	</fileset> -->
     		<fileset dir="${src.dir}" id="id" includes="*">
     <include name="**/*.yaml"/>
-</fileset>
+	</fileset>
     	<property name="filelist" refid="id"/>
 
-<echo>${filelist}</echo>
+<echo>The files selected are : ${filelist} ${file.separator}</echo>
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
   </target>
  
+    		
 <target name="build">
      <echo message="Before apic cmd" />
     
@@ -48,11 +49,11 @@
 	
 	<!--publishing the product to specific environment/catalog  -->
 		<echo message="publishing the product yaml" />
-		<echo message="the value of src is ${src.dir}" />
+		
 	<exec executable="cmd" osfamily="windows">
 
      	<arg value="/c"/>
-		<arg value="apic publish *.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish ${filelist} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
 	
 		 
