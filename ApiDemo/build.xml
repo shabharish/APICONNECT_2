@@ -2,18 +2,7 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-   <property name="src.dir" value="src">
-   </property>
-   	<!-- <fileset dir="src.dir" id="id">
-    	 <filename name="**/*product*.yaml"/>
-    	 <filename name="**/*.yaml"/>
-    	</fileset> -->
-    		<fileset dir="${src.dir}" id="id" includes="*">
-    <include name="**/*.yaml"/>
-	</fileset>
-    	<property name="filelist" refid="id"/>
-
-<echo>The files selected are : ${filelist} ${file.separator}</echo>
+   <property name="src.dir" value="src"/>
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
@@ -53,9 +42,17 @@
 	<exec executable="cmd" osfamily="windows">
 
      	<arg value="/c"/>
-		<arg value="apic publish ${filelist} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish ${src.dir}/Raghu-product.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
 	
+		 <!--publishing the api to specific product  -->
+		<echo message="publishing the api yaml" />
+		
+	<exec executable="cmd" osfamily="windows">
+
+     	<arg value="/c"/>
+		<arg value="apic publish ${src.dir}/Raghu.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+	</exec>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
 	<exec executable="cmd" osfamily="windows">
