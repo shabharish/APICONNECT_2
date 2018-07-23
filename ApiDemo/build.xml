@@ -2,21 +2,18 @@
 <project name="project" default="run">
   <target name="run" description="">
     <property environment="env" />
-   <property name="src.dir" value="src" />
-   	<fileset id="filesref" dir="${src.dir}" includes="*"/>
-   	<property name="files" refid="filesref"/>
-
-   	<echo message="Files:${line.separator}" />
-   	<for list="${files}" delimiter=";" param="file" >
-   	    <sequential>
-   	        <echo message="@{file}"/>
-   	        <!--Do more stuff with the file's name here-->
-   	    </sequential>
-   	</for>
+   <property name="src.dir" value="src">
+   </property>
    	<!-- <fileset dir="src.dir" id="id">
     	 <filename name="**/*product*.yaml"/>
     	 <filename name="**/*.yaml"/>
     	</fileset> -->
+    		<fileset dir="${src.dir}" id="id" includes="*">
+    <include name="**/*.yaml"/>
+</fileset>
+    	<property name="filelist" refid="id"/>
+
+<echo>${filelist}</echo>
     <property name="reports.dir" value="reports" />
     <property file="env/build.properties" />
     <antcall target="build" />
