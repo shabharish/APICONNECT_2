@@ -3,7 +3,7 @@
   <target name="run" description="">
     <property environment="env" />
    <property name="src.dir" value="src" />
-   	<fileset id="filesref" dir="${src.dir}}" includes="*"/>
+   	<fileset id="filesref" dir="${src.dir}" includes="*"/>
    	<property name="files" refid="filesref"/>
 
    	<echo message="Files:${line.separator}" />
