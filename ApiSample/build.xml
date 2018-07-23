@@ -10,6 +10,7 @@
  
 <target name="build">
      <echo message="Before apic cmd" />
+	<echo>The Base Directory is : ${basedir}</echo>
     
      <!-- <exec dir ="D:\Pratap" executable="cmd"> -->
 	 
