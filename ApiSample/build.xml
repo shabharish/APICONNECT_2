@@ -46,7 +46,7 @@
 	<fileset dir="${src.dir}" id="id" includes="*product*"/>
    	    	<property name="filelist" refid="id"/>
 
-   	<echo>The files selected are : ${filelist}</echo>
+   	<echo>The files selected for publishing are : ${filelist}</echo>
 	
 	<for list="${filelist}" delimiter=";" param = "file">
 	<sequential>
