@@ -1,0 +1,23 @@
+product: 1.0.0
+info:
+  name: thbsproduct
+  title: THBS_product
+  version: 1.0.0
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+plans:
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      value: 100/hour
+      hard-limit: false
+apis:
+  thbs1:
+    $ref: thbs1_1.0.0.yaml
+  thbs2:
+    $ref: thbs2_1.0.0.yaml
