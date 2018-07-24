@@ -34,11 +34,28 @@
 		<arg value="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
 	</exec>
 	
+	<!-- defining task to loop on the individual product files and publising it-->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" >
+	    <classpath>
+	        <pathelement location="${basedir}/lib/ant-contrib-1.0b3.jar"/>
+	    </classpath>
+	</taskdef>
+	
 	<!--publishing the product to specific environment/catalog  -->
+	
+	<fileset dir="${src.dir}" id="id" includes="*.yaml"/>
+   	    	<property name="filelist" refid="id"/>
+
+   	<echo>The files selected are : ${filelist}</echo>
 	
 	<exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
-		<arg value="apic publish ${src.dir}/shabproduct_1.0.0.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<for list="${filelist}" delimiter=";" param = "file">
+		<echo message = "Publishing the productfile @{file}" />
+   	        <sequential>
+			    <arg value="apic publish @{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+   	        </sequential>
+        </for>	
 	</exec>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
