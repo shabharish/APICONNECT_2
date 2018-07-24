@@ -52,7 +52,7 @@
 	<sequential>
 	<exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
-		<arg value="apic publish @{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
 	</sequential>
 	</for>
