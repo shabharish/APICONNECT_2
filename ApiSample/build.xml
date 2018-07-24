@@ -9,19 +9,17 @@
   </target>
  
 <target name="build">
+
      <echo message="Before apic cmd" />
-	<echo>The Base Directory is : ${basedir}</echo>
-    
-     <!-- <exec dir ="D:\Pratap" executable="cmd"> -->
 	 
-	 <!-- logging out if incase a session exists, am doing this bcoz ther is no cmd to find whether logged in or not -->
+	 <!-- logging out if incase a session exists, am doing this because ther is no cmd to find whether logged in or not -->
 	 
 	 <exec executable="cmd" osfamily="windows" >
      	<arg value="/c"/>
 		<arg value="apic logout --server ${api-server}"/>
 	 </exec>
 	
-	 <!-- loggin in to on premises apiconnect -->
+	 <!-- loggin in to on apiconnect premises -->
 	 
 	 <exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
@@ -57,7 +55,7 @@
 	</sequential>
 	</for>
 		 
-		 <!-- checking whether api is published or not by gettin the list of published apis -->
+		 <!-- checking whether api is published or not by getting the list of published apis -->
 	<exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
 		<arg value="apic apis"/>
