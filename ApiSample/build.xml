@@ -43,7 +43,7 @@
 	
 	<!--publishing the product to specific environment/catalog  -->
 	
-	<fileset dir="${src.dir}" id="id" includes="*.yaml"/>
+	<fileset dir="${src.dir}" id="id" includes="*product*"/>
    	    	<property name="filelist" refid="id"/>
 
    	<echo>The files selected are : ${filelist}</echo>
