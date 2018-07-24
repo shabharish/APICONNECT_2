@@ -10,6 +10,7 @@
  
 <target name="build">
      <echo message="Before apic cmd" />
+	<echo>The Base Directory is : ${basedir}</echo>
     
      <!-- <exec dir ="D:\Pratap" executable="cmd"> -->
 	 
@@ -33,12 +34,28 @@
 		<arg value="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
 	</exec>
 	
+	<!-- defining task to loop on the individual product files and publising it-->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" >
+	    <classpath>
+	        <pathelement location="${basedir}/lib/ant-contrib-1.0b3.jar"/>
+	    </classpath>
+	</taskdef>
+	
 	<!--publishing the product to specific environment/catalog  -->
 	
+	<fileset dir="${src.dir}" id="id" includes="*product*"/>
+   	    	<property name="filelist" refid="id"/>
+
+   	<echo>The files selected for publishing are : ${filelist}</echo>
+	
+	<for list="${filelist}" delimiter=";" param = "file">
+	<sequential>
 	<exec executable="cmd" osfamily="windows">
      	<arg value="/c"/>
-		<arg value="apic publish ${src.dir}/shabproduct_1.0.0.yaml --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+		<arg value="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
+	</sequential>
+	</for>
 		 
 		 <!-- checking whether api is published or not by gettin the list of published apis -->
 	<exec executable="cmd" osfamily="windows">
