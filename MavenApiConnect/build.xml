@@ -12,15 +12,6 @@
 
      <echo message="Before apic cmd" />
 	 
-	 <!-- logging out if incase a session exists, am doing this because ther is no cmd to find whether logged in or not -->
-	 
-	<!-- <exec executable="cmd" osfamily="unix" >
-     	<arg value="/c"/>
-		<arg value="apic logout --server ${api-server}"/>
-	 </exec> -->
-	
-	 <!-- loggin in to on apiconnect premises -->
-	 
 	<exec executable="bash" inputstring="apic login --username shabharish_murthy@thbs.com --password i3W@71278 --server eu.apiconnect.ibmcloud.com"/>
 			
 			<!-- Setting environment/catalog to publish -->
