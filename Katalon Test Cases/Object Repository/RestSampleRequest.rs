@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebServiceRequestEntity>
+   <description></description>
+   <name>RestSampleRequest</name>
+   <tag></tag>
+   <elementGuidId>61215026-5455-46f6-97bc-66d3e84eb565</elementGuidId>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <httpBody></httpBody>
+   <httpBodyContent></httpBodyContent>
+   <httpBodyType></httpBodyType>
+   <migratedVersion>5.4.1</migratedVersion>
+   <restRequestMethod>GET</restRequestMethod>
+   <restUrl>https://api.eu.apiconnect.ibmcloud.com/shabharishmurthythbscom-dev/test-env/hello-avinash</restUrl>
+   <serviceType>RESTful</serviceType>
+   <soapBody></soapBody>
+   <soapHeader></soapHeader>
+   <soapRequestMethod></soapRequestMethod>
+   <soapServiceFunction></soapServiceFunction>
+   <wsdlAddress></wsdlAddress>
+</WebServiceRequestEntity>
