@@ -13,13 +13,9 @@
      <echo message="Before apic cmd" />
 	 
 	<exec executable="bash" inputstring="apic login --username shabharish_murthy@thbs.com --password i3W@71278 --server eu.apiconnect.ibmcloud.com"/>
-			
-			<!-- Setting environment/catalog to publish -->
-	<exec  executable="cmd" osfamily="unix">
-     	<arg value="/c"/>
-		<arg value="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
-	</exec>
 	
+	<exec executable="bash" inputstring="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
+			
 	<!-- defining task to loop on the individual product files and publising it-->
 	<taskdef resource="net/sf/antcontrib/antlib.xml" >
 	    <classpath>
@@ -36,18 +32,13 @@
 	
 	<for list="${filelist}" delimiter=";" param = "file">
 	<sequential>
-	<exec executable="cmd" osfamily="unix">
-     	<arg value="/c"/>
-		<arg value="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
-	</exec>
+	<exec executable="bash" inputstring="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</sequential>
 	</for>
 		 
 		 <!-- checking whether api is published or not by getting the list of published apis -->
-	<exec executable="cmd" osfamily="unix">
-     	<arg value="/c"/>
-		<arg value="apic apis"/>
-	</exec>
+	<exec executable="bash" inputstring="apic apis"/>
+
    </target>
 
 </project>
