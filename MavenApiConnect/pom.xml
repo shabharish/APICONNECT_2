@@ -8,7 +8,7 @@
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<build>
 		
 		<plugins>
@@ -33,7 +33,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build> 
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -41,4 +41,32 @@
 			<version>4.10</version>
 		</dependency>
 	</dependencies>
+	
+	<pluginRepositories>
+	
+		<pluginRepository>
+		  <id>nexusT</id>
+		  <name>plugin</name>
+		  <url>http://172.30.64.60:3000/nexus/content/groups/public</url>
+		  <releases>
+		   <enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+		   <enabled>true</enabled>
+		  </snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<distributionManagement>
+	    <repository>
+		 <id>nexusT</id>
+		 <name>API-Releases</name>
+		 <url>http://172.30.64.60:3000/nexus/content/repositories/API-Releases/</url>
+	    </repository>
+	    <snapshotRepository>
+		 <id>nexusT</id>
+		 <name>API-Snapshots</name>
+		 <url>http://172.30.64.60:3000/nexus/content/repositories/API-Snapshots/</url>
+	    </snapshotRepository>
+	</distributionManagement>
 </project>
