@@ -14,20 +14,20 @@
 	 
 	 <!-- logging out if incase a session exists, am doing this because ther is no cmd to find whether logged in or not -->
 	 
-	 <exec executable="cmd" osfamily="solaris" >
+	 <exec executable="cmd" osfamily="unix" >
      	<arg value="/c"/>
 		<arg value="apic logout --server ${api-server}"/>
 	 </exec>
 	
 	 <!-- loggin in to on apiconnect premises -->
 	 
-	 <exec executable="cmd" osfamily="solaris">
+	 <exec executable="cmd" osfamily="unix">
      	<arg value="/c"/>
 		<arg value="apic login --username ${api-user} --password ${api-pwd} --server ${api-server}"/>
 	 </exec>
 			
 			<!-- Setting environment/catalog to publish -->
-	<exec  executable="cmd" osfamily="solaris">
+	<exec  executable="cmd" osfamily="unix">
      	<arg value="/c"/>
 		<arg value="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
 	</exec>
@@ -48,7 +48,7 @@
 	
 	<for list="${filelist}" delimiter=";" param = "file">
 	<sequential>
-	<exec executable="cmd" osfamily="solaris">
+	<exec executable="cmd" osfamily="unix">
      	<arg value="/c"/>
 		<arg value="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
 	</exec>
@@ -56,7 +56,7 @@
 	</for>
 		 
 		 <!-- checking whether api is published or not by getting the list of published apis -->
-	<exec executable="cmd" osfamily="solaris">
+	<exec executable="cmd" osfamily="unix">
      	<arg value="/c"/>
 		<arg value="apic apis"/>
 	</exec>
