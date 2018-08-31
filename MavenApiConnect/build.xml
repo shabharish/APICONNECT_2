@@ -35,7 +35,7 @@
 	<!-- defining task to loop on the individual product files and publising it-->
 	<taskdef resource="net/sf/antcontrib/antlib.xml" >
 	    <classpath>
-	        <pathelement location="${basedir}/lib/ant-contrib-1.0b3.jar"/>
+	        <pathelement location="${basedir}/ant-contrib-1.0b3.jar"/>
 	    </classpath>
 	</taskdef>
 	
