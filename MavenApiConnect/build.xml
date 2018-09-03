@@ -12,7 +12,8 @@
 
      <echo message="Before apic cmd" />
 	 
-	<exec executable="bash" inputstring="apic login --username shabharish_murthy@thbs.com --password i3W@71278 --server eu.apiconnect.ibmcloud.com"/>
+	<exec executable="bash" inputstring="apic login --username ${api-user} --password ${api-pwd} --server ${api-server}"/>
+	
 	
 	<exec executable="bash" inputstring="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
 			
