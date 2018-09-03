@@ -1,0 +1,23 @@
+---
+product: "1.0.0"
+info:
+  name: "calculator-product"
+  title: "Calculator-Product"
+  version: "1.0.0"
+visibility:
+  view:
+    enabled: true
+    type: "public"
+    tags: []
+    orgs: []
+  subscribe:
+    enabled: true
+    type: "authenticated"
+    tags: []
+    orgs: []
+apis:
+  calculator:
+    $ref: "calculator_1.0.0.yaml"
+plans:
+  Default:
+    title: "Default Plan"
