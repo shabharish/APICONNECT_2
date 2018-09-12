@@ -18,7 +18,7 @@
 				<version>1.8</version>
 				<executions>
 					<execution>
-						<phase>install</phase>
+						<phase>package</phase>
 						<configuration>
 							<target>
 								<!-- Place any Ant task here. You can add anything you can add between 
@@ -27,7 +27,7 @@
 							</target>
 						</configuration>
 						<goals>
-							<goal>run</goal>
+							<goal>deploy</goal>
 						</goals>
 					</execution>
 				</executions>
