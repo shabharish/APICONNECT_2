@@ -18,7 +18,7 @@
 				<version>1.8</version>
 				<executions>
 					<execution>
-						<phase>install</phase>
+						<phase>deploy</phase>
 						<configuration>
 							<target>
 								<!-- Place any Ant task here. You can add anything you can add between 
