@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="project" default="run">
+  <target name="run" description="">
+    <property environment="env" />
+    <property name="src.dir" value="src" />
+    <property name="reports.dir" value="reports" />
+    <property file="env/build-prod.properties" />
+    <antcall target="build" />
+  </target>
+ 
+<target name="build">
+
+     <echo message="Before apic cmd" />
+	 
+	<exec executable="bash" inputstring="apic login --username ${api-user} --password ${api-pwd} --server ${api-server}"/>
+	
+	
+	<exec executable="bash" inputstring="apic config:set catalog=apic-catalog://${api-server}/orgs/${org}/catalogs/${catalog}"/>
+			
+	<!-- defining task to loop on the individual product files and publising it-->
+	<taskdef resource="net/sf/antcontrib/antlib.xml" >
+	    <classpath>
+	        <pathelement location="${basedir}/ant-contrib-1.0b3.jar"/>
+	    </classpath>
+	</taskdef>
+	
+	<!--publishing the product to specific environment/catalog  -->
+	
+	<fileset dir="${src.dir}" id="id" includes="*product*"/>
+   	    	<property name="filelist" refid="id"/>
+
+   	<echo>The files selected for publishing are : ${filelist}</echo>
+	
+	<for list="${filelist}" delimiter=";" param = "file">
+	<sequential>
+	<exec executable="bash" inputstring="apic publish ${src.dir}/@{file} --catalog ${catalog} --organization ${org} --server ${api-server}"/>
+	</sequential>
+	</for>
+		 
+		 <!-- checking whether api is published or not by getting the list of published apis -->
+	<exec executable="bash" inputstring="apic apis"/>
+
+   </target>
+
+</project>
