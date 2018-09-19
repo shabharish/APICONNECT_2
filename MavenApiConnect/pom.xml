@@ -2,7 +2,7 @@
   <modelVersion>5.0.0</modelVersion>
   <groupId>MavenApiConnect</groupId>
   <artifactId>MavenApiConnect</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   
   
   <properties>
