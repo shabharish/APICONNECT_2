@@ -61,12 +61,12 @@
 	    <repository>
 		 <id>nexusT</id>
 		 <name>API-Releases</name>
-		 <url>http://172.30.64.108:3000/nexus/content/repositories/API-Releases/</url>
+		 <url>http://172.30.64.108:3000/nexus/content/repositories/API-Releases</url>
 	    </repository>
 	   <snapshotRepository>
 		 <id>nexusT</id>
 		 <name>API-Snapshots</name>
-		 <url>http://172.30.64.108:3000/nexus/content/repositories/API-Snapshots/</url>
+		 <url>http://172.30.64.108:3000/nexus/content/repositories/API-Snapshots</url>
 	    </snapshotRepository> 
 	</distributionManagement>
 </project>
